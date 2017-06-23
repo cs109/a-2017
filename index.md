@@ -11,7 +11,7 @@ Lauren Alexander, Gabriel Goulet-Langlois, Joshua Wolff](http://cs109hubway.gith
 
 Learning from data in order to gain useful predictions and insights. This course introduces methods for five key facets of an investigation: data wrangling, cleaning, and sampling to get a suitable data set; data management to be able to access big data quickly and reliably; exploratory data analysis to generate hypotheses and intuition; prediction based on statistical methods such as regression and classification; and communication of results through visualization, stories, and interpretable summaries.
 
-We will be using Python for all programming assignments and projects. All lectures will be posted [here](http://cs109.github.io/a/2017/pages/material.html) and should be available 24 hours after meeting time. You will also be able to find the Labs and Videos here as well.
+We will be using Python for all programming assignments and projects. All lectures will be posted [here](http://cs109.github.io/a-2017/pages/material.html) and should be available 24 hours after meeting time. You will also be able to find the Labs and Videos here as well.
 
 The course is also listed as ac209a, stat121a, and E-109a.
 
@@ -20,7 +20,7 @@ The course is also listed as ac209a, stat121a, and E-109a.
 
 * Lectures are 2:30-4pm on Mondays & Wednesdays in NW-B103 (Northwest Building)
 * Labs are HERE.
-* Section times can be dound on the [schedule](http://cs109.github.io/a/2017/pages/schedule.html) page
+* Section times can be dound on the [schedule](http://cs109.github.io/a-2017/pages/schedule.html) page
 
 #### Instructors
 
