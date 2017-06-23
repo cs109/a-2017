@@ -1,1 +1,2 @@
-# cs109a-fall2017
+# 2017
+Public material for CS109
