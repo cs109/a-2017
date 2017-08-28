@@ -1,0 +1,462 @@
+\documentclass[12pt,t]{beamer}
+\usepackage{graphicx}
+\usepackage[vlined]{algorithm2e}
+\usepackage{times}
+\usepackage{calc}
+\usepackage{url}
+\usepackage{soul}
+\usepackage{graphicx}
+\usepackage{multirow, hhline}
+\usepackage{array, booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{relsize}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{pagecolor}
+\usepackage{lipsum}
+\usepackage{capt-of}
+\usepackage{booktabs}
+
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage[T1]{fontenc}
+\usepackage{ae}
+\graphicspath{{fig/}}
+\setbeameroption{hide notes}
+\setbeamertemplate{note page}[plain]
+
+\usetheme{default}
+\beamertemplatenavigationsymbolsempty
+\hypersetup{pdfpagemode=UseNone}
+
+\usefonttheme{professionalfonts}
+\usefonttheme{serif}
+\usepackage{fontspec}
+\setmainfont{Karla}
+\setbeamerfont{note page}{family*=pplx,size=\footnotesize} % Palatino for notes
+
+\definecolor{foreground}{RGB}{70,70,70}
+\definecolor{background}{RGB}{249, 249, 249} %24,24,24
+%\definecolor{title}{RGB}{107,174,214} %107,174,214
+\definecolor{title}{RGB}{70,70,70}
+\definecolor{gray}{RGB}{0,0,0}
+\definecolor{subtitle}{RGB}{70,70,70}
+\definecolor{hilight}{RGB}{102,255,204}
+\definecolor{vhilight}{RGB}{255,111,207}
+
+\setbeamercolor{titlelike}{fg=title}
+\setbeamercolor{subtitle}{fg=subtitle}
+\setbeamercolor{institute}{fg=gray}
+\setbeamercolor{normal text}{fg=foreground,bg=background}
+
+
+\setbeamercolor{item}{fg=foreground} % color of bullets
+\setbeamercolor{subitem}{fg=gray}
+\setbeamercolor{itemize/enumerate subbody}{fg=gray}
+\setbeamertemplate{itemize subitem}{{\textendash}}
+\setbeamerfont{itemize/enumerate subbody}{size=\footnotesize}
+\setbeamerfont{itemize/enumerate subitem}{size=\footnotesize}
+
+\setbeamercolor{block title}{fg=white,bg=gray!70}
+\setbeamercolor{block body}{fg=black,bg=gray!10}
+\setbeamercolor{block title alerted}{fg=red,bg=gray!40}
+\setbeamercolor{block title example}{fg=black,bg=green!20}
+\setbeamercolor{block body example}{fg=black,bg=green!5}
+\setbeamerfont{block title}{series=\bfseries}
+
+\hypersetup{colorlinks,linkcolor=foreground,urlcolor=foreground}
+
+
+\setbeamertemplate{footline}{%
+    \raisebox{5pt}{\makebox[\paperwidth]{\hfill\makebox[20pt]{\color{gray}
+          \scriptsize\insertframenumber}}}\hspace*{5pt}}
+
+\addtobeamertemplate{note page}{\setlength{\parskip}{12pt}}
+
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\ig}{\includegraphics}
+\newcommand{\subt}[1]{{\footnotesize \color{subtitle} {#1}}}
+
+\let\emph\relax % there's no \RedeclareTextFontCommand
+\DeclareTextFontCommand{\emph}{\bfseries\em}
+
+
+\setbeamertemplate{frametitle}
+{\vskip4pt
+  \leavevmode
+%\hbox{%
+\begin{beamercolorbox}[wd=\paperwidth,ht=2ex,dp=0ex]{frametitle}%
+\underline{\makebox[\paperwidth][l]{\hspace*{10pt}
+\large {{\insertframetitle}}}}
+\end{beamercolorbox}
+%  }%
+}
+
+%\setbeamercolor{frametitle}{fg=yellow,bg=red}
+
+\begin{document}
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \underline{\makebox[0.6\paperwidth][l]{
+\large {{\insertsectionhead}}}}
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+\title{\large{Lecture \#4: Model Selection}}
+\subtitle{CS 109A, STAT 121A, AC 209A: Data Science}
+\author{Pavlos Protopapas \and Kevin Rader}
+%\institute{Harvard University}
+\date{}
+\titlegraphic{
+   \includegraphics[height=2cm]{iacs}\includegraphics[height=2cm]{hogwarts}
+}
+{
+\setbeamertemplate{footline}{} % no page number here
+\frame{
+  \titlepage
+  
+}
+}
+
+
+\begin{frame}{Lecture Outline}
+\tableofcontents
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Review}
+
+%%%%%%%%%%%%%%
+\begin{frame}{Multiple Linear and Polynomial Regression} 
+\vskip-0.4cm
+\only<1>{
+Last time, we saw that we can build a linear model for multiple predictors, $\{X_1, \ldots, X_J\}$,
+\[
+y = \beta_0 + \beta_1 x_1 + \ldots + \beta_J x_J + \epsilon.
+\]
+Using vector notation, 
+\begin{align*}
+\mathbf{Y} &= \left( \begin{array}{c}
+y_1\\
+\vdots\\
+y_y
+\end{array} \right),& \mathbf{X} &= \left( \begin{array}{cccc}
+1 & x_{1, 1} & \ldots & x_{1, J}\\
+1 & x_{2, 1} & \ldots & x_{2, J}\\
+\vdots & \vdots & \ddots & \vdots\\
+1 & x_{n, 1} & \ldots & x_{n, J}
+\end{array} \right), & \pmb{\beta} &=  \left( \begin{array}{c}
+\beta_0\\
+\beta_1\\
+\vdots\\
+\beta_J
+\end{array} \right),
+\end{align*}
+We can express the regression coefficients as
+\[
+\widehat{\pmb{\beta}} = \underset{\pmb{\beta}}{\mathrm{argmin}}\; \mathrm{MSE}(\pmb{\beta}) = \left( \mathbf{X}^\top  \mathbf{X} \right)^{-1} \mathbf{X}^\top  \mathbf{Y}.
+\]
+}
+\only<2>{
+We also saw that there are many ways to generalize multiple linear regression:
+\vskip0.2cm
+\begin{itemize}
+\item Multiple linear regression with interaction terms, $x_ix_jx_k$ etc.
+\vskip0.2cm
+\item Polynomial regression 
+\[
+y = \beta_0 + \beta_1 x + \ldots + \beta_M x^M + \epsilon.
+\]
+\vskip0.2cm
+\item Polynomial regression with multiple predictors and interaction terms.
+\end{itemize}
+\vskip0.2cm
+In each case, we treat each polynomial term $x_j^m$ or interaction term $x_ix_jx_k$ as an unique predictor and perform multiple linear regression.
+}
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}{Selecting Significant Predictors} \small
+\vskip-0.4cm
+When modeling with multiple predictors, we are interested in which predictor or sets of predictors have a significant effect on the response. 
+\vskip0.2cm
+Significance of predictors can be measured in multiple ways:
+\vskip0.1cm
+\begin{itemize}
+\item \textbf{Hypothesis testing:}
+\vskip0.1cm
+\begin{itemize}
+\item Subsets of predictors with higher $F$-stats higher than 1 may be significant.
+\vskip0.2cm
+\item Individual predictors with $p$-values smaller than established threshold (e.g. 0.05) may be significant.
+\vskip0.2cm
+\end{itemize}
+\item \textbf{Evaluating model fitness:} 
+\vskip0.1cm
+\begin{itemize}
+\item Subsets of predictors with higher model $R^2$ should be more significant.
+\vskip0.2cm
+\item Subsets of predictors with lower model AIC or BIC should be more significant.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Model Selection: Overview}
+
+%%%%%%%%%%%%%%
+\begin{frame}{Overfitting: Another Motivation for Model Selection} 
+\vskip-0.4cm
+Finding subsets of significant predictors is an important for model interpretation. But there is another strong reason to model using the smaller set of significant predictors: to avoid overfitting.
+\vskip0.2cm
+\begin{block}{Definition}
+\emph{Overfitting} is the phenomenon where in the model is unnecessarily complex, in the sense that portions of the model captures the random noise in the observation, rather than the relationship between predictor(s) and response. 
+\end{block}
+\vskip0.2cm
+Overfitting causes the model to lose predictive power on new data.
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}{An Example} 
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}{Causes of Overfitting} 
+\vskip-0.4cm
+As we saw, overfitting can happen when
+\vskip0.2cm
+\begin{itemize}
+\item there are too many predictors:
+\begin{itemize}
+\item the feature space has high dimensionality
+\item the polynomial degree is too high
+\item too many cross terms are considered
+\end{itemize}
+\item the coefficients values are too extreme
+\end{itemize}
+\vskip0.2cm
+A sign of overfitting may be a high training $R^2$ or low $MSE$ and unexpectedly poor testing performance. 
+\vskip0.2cm
+\textbf{Note:} There is no 100\% accurate test for overfitting and there is not a 100\% effective way to prevent it. Rather, we may use multiple techniques in combination to prevent overfitting and various methods to detect it.
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}{Model Selection} \small
+\vskip-0.4cm
+\emph{Model selection} is the application of a principled method to determine the complexity of the model, e.g. choosing a subset of predictors, choosing the degree of the polynomial model etc.
+\vskip0.2cm
+Model selection typically consists of the following steps:
+\begin{enumerate}
+\item split the training set into two subsets: training and \emph{validation}
+\item multiple models (e.g. polynomial models with different degrees) are fitted on the training set; each model is evaluated on the validation set
+\item the model with the best validation performance is selected
+\item the selected model is evaluated one last time on the testing set
+\end{enumerate}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Stepwise Variable Selection}
+
+%%%%%%%%%%%%%%
+\begin{frame}{Exhaustive Selection} 
+\vskip-0.4cm
+To find the optimal subset of predictors for modeling a response variable, we can
+\vskip0.2cm
+\begin{itemize}
+\item compute all possible subsets of $\{X_1, \ldots, X_J\}$,
+\vskip0.2cm
+\item evaluate all the models constructed from the subsets of $\{X_1, \ldots, X_J\}$,
+\vskip0.2cm
+\item find the model that optimizes some metric.
+\end{itemize}
+\vskip0.2cm
+While straightforward, \emph{exhaustive selection} is computationally infeasible, since $\{X_1, \ldots, X_J\}$ has $2^J$ number of possible subsets.
+\vskip0.2cm
+Instead, we will consider methods that iteratively build the optimal set of predictors.
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}{Variable Selection: Forward} \footnotesize
+\vskip-0.4cm
+In \emph{forward selection}, we find an `optimal' set of predictors by iterative building up our set.
+\vskip0.1cm
+\begin{enumerate}
+\item Start with the empty set $P_0$, construct the null model $M_0$.
+\vskip0.2cm
+\item For $k = 1, \ldots, J$:
+\begin{enumerate}
+\item Let $M_{k-1}$ be the model constructed from the best set of $k-1$ predictors, $P_{k-1}$.
+\vskip0.1cm 
+\item Select the predictor $X_{n_{k}}$, not in $P_{k-1}$, so that the model constructed from $P_{k} = X_{n_{k}} \cup P_{k-1}$ optimizes a fixed metric (this can be $p$-value, $F$-stat; validation MSE, $R^2$; or AIC/BIC on training set). 
+\vskip0.1cm
+\item Let $M_k$ denote the model constructed from the optimal $P_k$. 
+\end{enumerate}
+\item Select the model $M$ amongst $\{M_0, M_1, \ldots, M_J\}$ that optimizes a fixed metric (this can be validation MSE, $R^2$; or AIC/BIC on training set). 
+\vskip0.2cm
+\item Evaluate the final model  $M$ on the testing set.
+\end{enumerate}
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}{Variable Selection: Backward} \footnotesize
+\vskip-0.4cm
+In \emph{backward selection}, we find an `optimal' set of predictors by iterative eliminating predictors.
+\vskip0.1cm
+\begin{enumerate}
+\item Start with all the predictors $P_J$, construct the full model $M_J$.
+\vskip0.2cm
+\item For $k = 1, \ldots, J$:
+\begin{enumerate}
+\item Let $M_{k}$ be the model constructed from the best set of $k-1$ predictors, $P_{k}$.
+\vskip0.1cm 
+\item Select the predictor $X_{n_{k}}$ in $P_{k}$ so that the model constructed from $P_{k-1} = P_{k-1}- \{X_{n_{k}}\}$ optimizes a fixed metric (this can be $p$-value, $F$-stat; validation MSE, $R^2$; or AIC/BIC on training set). 
+\vskip0.1cm
+\item Let $M_{k-1}$ denote the model constructed from the optimal $P_{k-1}$. 
+\end{enumerate}
+\item Select the model $M$ amongst $\{M_0, M_1, \ldots, M_J\}$ that optimizes a fixed metric (this can be validation MSE, $R^2$; or AIC/BIC on training set). 
+\vskip0.2cm
+\item Evaluate the final model  $M$ on the testing set.
+\end{enumerate}
+\end{frame}
+
+
+%%%%%%%%%%%%%%
+\begin{frame}{An Example}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Cross Validation}
+
+%%%%%%%%%%%%%%
+\begin{frame}{Cross Validation: Motivation} 
+Using a single validation set to select amongst multiple models can be problemmatic - there is the possibility of overfitting to the validation set. 
+\vskip0.4cm
+One solution to the problems raised by using a single validation set is to evaluate each model multiple validation sets and average the validation performance. 
+\vskip0.4cm
+One can randomly split the training set into training and validation multiple times, but randomly creating these sets can create the scenario where important features of the data never appear in our random draws. 
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}{Leave-One-Out} \footnotesize
+\vskip-0.4cm
+Given a data set $\{\mathbf{X}_1, \ldots, \mathbf{X}_n\}$, where each $\mathbf{X}_i = ({x}_{i,1}, \ldots, {x}_{i,J})$ contains $J$ number of features. 
+\vskip0.2cm
+To ensure that every observation in the dataset is included in at least one training set and at least one validation set, we create training/validation splits using the \emph{leave one out} method:
+\vskip0.2cm
+\begin{itemize}
+\item validation set: $\{ \mathbf{X}_i\}$ 
+\vskip0.2cm
+\item training set: $ \mathbf{X}_{-i} := \{ \mathbf{X}_1, \ldots, \mathbf{X}_{i-1}, \mathbf{X}_{i+1}, \ldots, \mathbf{X}_n \}$ 
+\end{itemize}
+\vskip0.2cm
+for $i = 1, \ldots, n$. We fit the model on each training set, denoted $\widehat{f}_{\mathbf{X}_{-i}}$, and evaluate it on the corresponding validation set, $\widehat{f}_{\mathbf{X}_{-i}}(\mathbf{X}_i)$. The \emph{cross validation score} is the performance of the model averaged across all validation sets:
+\[
+CV(\mathrm{Model}) = \frac{1}{n} L\left(\widehat{f}_{\mathbf{X}_{-i}}(\mathbf{X}_i) \right),
+\]
+where $L$ is a loss function.
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}{K-Fold Cross Validation} \footnotesize
+\vskip-0.4cm
+Rather than creating $n$ number of training/validation splits, each time leaving one data point for the validation set, we can include more data in the validation set using \textbf{K-fold validation}:
+\vskip0.2cm
+\begin{itemize}
+\item split the data into $K$ uniformly sized chunks, $\{C_1, \ldots, C_K\}$
+\vskip0.2cm
+\item we create $K$ number of training/validation splits, using one of the $K$ chunks for validation and the rest for training.
+\end{itemize}
+\vskip0.2cm
+We fit the model on each training set, denoted $\widehat{f}_{C_{-i}}$, and evaluate it on the corresponding validation set, $\widehat{f}_{C_{-i}}(C_i)$. The \emph{cross validation score} is the performance of the model averaged across all validation sets:
+\[
+CV(\mathrm{Model}) = \frac{1}{n} L\left(\widehat{f}_{C_{-i}}(C_i) \right),
+\]
+where $L$ is a loss function.
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Applications of Model Selection}
+
+%%%%%%%%%%%%%%
+\begin{frame}{Predictor Selection: Cross Validation} 
+Rather than choosing a subset of significant predictors using stepwise selection, we can use $K$-fold cross validation:
+\vskip0.2cm
+\begin{itemize}
+\item create a collection of different subsets of the predictors
+\vskip0.2cm
+\item for each subset of predictors, compute the cross validation score for the model created using only that subset
+\vskip0.2cm
+\item select the subset (and the corresponding model) with the best cross validation score
+\vskip0.2cm
+\item evaluate the model one last time on the test set
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}{Degree Selection: Stepwise} 
+We can frame the problem of degree selection for polynomial models as a predictor selection problem: which of the predictors $\{x, x^2, \ldots, x^M \}$ should we select for modeling?
+\vskip0.4cm
+We can apply stepwise selection to determine the optimal subset of predictors.
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}{Degree Selection: Cross Validation} 
+We can also select the degree of a polynomial model using $K$-fold cross validation.
+\vskip0.2cm
+\begin{itemize}
+\item consider a number of different degrees
+\vskip0.2cm
+\item for each degree, compute the cross validation score for a polynomial model of that degree
+\vskip0.2cm
+\item select the degree, and the corresponding model, with the best cross validation score
+\vskip0.2cm
+\item evaluate the model one last time on the test set
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}{kNN Revisited} 
+Recall our first simple, intuitive, non-parametric model for regression - the kNN model. We saw that it is vitally important to select an appropriate $k$ for the data. 
+\vskip0.4cm
+If the $k$ is too small then the model is very sensitive to noise (since a new prediction is based on very few observed neighbors), and if the $k$ is too large, the model tends towards making constant predictions.
+\vskip0.4cm
+A principled way to choose $k$ is through $K$-fold cross validation.
+\end{frame}
+
+%%%%%%%%%%%%%%
+\begin{frame}{A Simple Example} 
+
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Bibliography}
+
+\begin{enumerate}
+ \fontsize{8}{10}\selectfont
+\item Bolelli, L., Ertekin, S., and Giles, C. L. \emph{Topic and trend detection in text collections using latent dirichlet allocation}. In European Conference on Information Retrieval (2009), Springer, pp. 776-780.
+\item Chen, W., Wang, Y., and Yang, S. \emph{Efficient influence maximization in social networks. In Proceedings of the 15th ACM SIGKDD international conference on Knowledge discovery and data mining (2009)}, ACM, pp. 199-208.
+\item Chong, W., Blei, D., and Li, F.-F. \emph{Simultaneous image classification and annotation. In Computer Vision and Pattern Recognition}, 2009. CVPR 2009. IEEE Conference on (2009), IEEE, pp. 1903-1910.
+\item Du, L., Ren, L., Carin, L., and Dunson, D. B. \emph{A bayesian model for simultaneous image clustering, annotation and object segmentation}. In Advances in neural information processing systems (2009), pp. 486-494.
+\item Elango, P. K., and Jayaraman, K. \emph{Clustering images using the latent dirichlet allocation model.}
+\item Feng, Y., and Lapata, M. \emph{Topic models for image annotation and text illustration}. In Human Language Technologies: The 2010 Annual Conference of the North American Chapter of the Association for Computational Linguistics (2010), Association for Computational Linguistics, pp. 831-839.
+\item Hannah, L. A., and Wallach, H. M. \emph{Summarizing topics: From word lists to phrases.}
+\item Lu, R., and Yang, Q. \emph{Trend analysis of news topics on twitter}. International Journal of Machine Learning and Computing 2, 3 (2012), 327.
+\end{enumerate}
+
+\end{frame}
+
+\end{document}
