@@ -8,7 +8,7 @@ highlighter: rouge
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
 #
-title : cs109a: Data Science I
+title : "cs109a: Data Science I"
 author :
   name : Rahul Dave
   email : rahuldave@github.com
