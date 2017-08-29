@@ -3,12 +3,12 @@
 permalink: /:categories/:year/:month/:day/:title
 
 exclude: [".rvmrc", ".rbenv-version", "ReadMe.md", "Rakefile", "changelog.md", "License.md"]
-highlighter: pygments
+highlighter: rouge
 
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
 #
-title : cs109a
+title : cs109a: Data Science I
 author :
   name : Rahul Dave
   email : rahuldave@github.com
