@@ -43,9 +43,9 @@ b) Advanced Sections which will cover advanced topics like the mathematical unde
 #### Instructor Office Hours
 
 Pavlos: Tuesday 3:00-5:00 pm, IACS student lobby MD ground floor
-Kevin: Tuesday 1:00-3:00 pm, SC-300D
-Rahul: Monday 4:00-5:00pm, IACS student lobby MD ground floor
-Margo: Friday noon - 2pm, Pierce 207A
+Kevin: Tuesday 1:00-3:00 pm, IACS student lobby MD ground floor
+Rahul: Wednesday 2.30-4:00pm, IACS student lobby MD ground floor
+Margo: Monday 2.30-4.00pm, IACS student lobby MD ground floor
 
 #### Assignments
 There will be an initial self-assessment homework called HW0 and 8 more graded homework assignments. Some of them will be due in a week and some of them in two weeks. You will be working in Jupyter Notebooks which you can run in your own environment or in the SEAS JupyterHub cloud (accessed from Canvas). 
@@ -59,22 +59,27 @@ Quizzes will be taken at the end of class and the material will be based on what
 
 There will be one midterm (take-home) to be done individually (see Calendar for dates) 
 
+#### Final
+
+There will be a final group exam (2-4 students) due during Exam period.  More details to come in November. 
+See Calendar for specific dates.
+
 #### Recording
 
 Lectures will be recorded and made available real time for DCE students and 24 hours later for in-campus students via Canvas.
 Labs will also be videotaped only for distant students. 
 
-### Required Textbook
+### Recommended Textbook
 
 **An Introduction to Statistical Learning** by James, Witten, Hastie, Tibshirani. 
 
 The book is available here:
 
+**Free electronic version**: http://www-bcf.usc.edu/~gareth/ISL/ 
+
 **HOLLIS**: http://link.springer.com.ezp-prod1.hul.harvard.edu/book/10.1007%2F978-1-4614-7138-7
 
 **Amazon**: https://www.amazon.com/Introduction-Statistical-Learning-Applications-Statistics/dp/1461471370 
-
-**Free electronic version**: http://www-bcf.usc.edu/~gareth/ISL/ 
 
 ### Course Policies
 
@@ -94,8 +99,8 @@ For private issues
 
 We take great care in making sure all homework are graded properly. However if you feel that your assignment was not fairly graded you may:
 
-1. Contact the grader by emailing the helpline with subject line "Regrade HW1: Grader=johnSeitz"  within 7 days, then expect to hear back from your grader within 72 hours.  
-2. If still unhappy with the response, then submit a reason via email to the Helpline with subject line "Regrade HW1: Second request" within 11 days total of receiving the grade, and expect a response within 72 hours. No regrading requests will be accepted orally or if they are submitted more than 7 days later. You should note, though, that once regrading is done, you may receive a grade that is higher or lower than the initial grade. 
+1. Contact the grader by emailing the helpline with subject line “Regrade HW1: Grader=johnSeitz”  within 3 days.  
+2. If still unhappy with the initial response, then submit a reason via email to the Helpline with subject line “Regrade HW1: Second request” within 3 days of receiving the initial response.  Note: once regrading is done, you may receive a grade that is higher or lower than the initial grade.
 
 #### Late Day Policy
 
@@ -142,7 +147,7 @@ We will be using Jupyter Notebooks, Python 3 and various python modules. You can
 
 ### Accommodations for students with disabilities
 
-Students needing academic adjustments or accommodations because of a documented disability must present their Faculty Letter from the Accessible Education Office (AEO) and speak with Kevin by the end of the third week of the term: Friday, September 18.  Failure to do so may result in us being unable to respond in a timely manner. All discussions will remain confidential.
+Students needing academic adjustments or accommodations because of a documented disability must present their Faculty Letter from the Accessible Education Office (AEO) and speak with Kevin by the end of the third week of the term: Friday, September 15.  Failure to do so may result in us being unable to respond in a timely manner. All discussions will remain confidential.
  
  
 
