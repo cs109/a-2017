@@ -1,9 +1,7 @@
 ---
 layout: frontpage
-title: cs109a: Introduction to Data Science
+title: "cs109a: Introduction to Data Science"
 ---
-
-## cs109a: Introduction to Data Science
 
 <img src="figures/hubwayclustering.png" alt="Hubway Clustering" />
 
