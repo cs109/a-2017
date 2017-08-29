@@ -3,4 +3,8 @@ layout: page
 title: Class Material
 ---
 
-**Lectures**: You can obtain all the lecture slides at any point by cloning [2015](https://github.com/cs109/a-2017), and using `git pull` as the weeks go on.
+#### Week 1 (Mon Aug 31 - Fri Sep 4)
+
+- Lecture 1: Course Overview
+  - Slides: STILL TO COME
+  - Notebooks: STILL TO COME
