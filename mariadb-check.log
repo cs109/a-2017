@@ -1,0 +1,300 @@
+-SET INSERT_ID=2/*!*/;
+-SET TIMESTAMP=1579609942/*!*/;
+-insert into t1 values(null, "b")
+-/*!*/;
+-SET TIMESTAMP=1579609942/*!*/;
+-COMMIT
+-/*!*/;
+ DELIMITER ;
+ # End of log file
+ ROLLBACK /* added by mysqlbinlog */;
+@@ -680,11 +670,8 @@
+ /*!50003 SET @OLD_COMPLETION_TYPE=@@COMPLETION_TYPE,COMPLETION_TYPE=0*/;
+ DELIMITER /*!*/;
+ ROLLBACK/*!*/;
+-BEGIN
+-/*!*/;
+-SET INSERT_ID=3/*!*/;
+ use `test`/*!*/;
+-SET TIMESTAMP=1579609944/*!*/;
++SET TIMESTAMP=1579609942/*!*/;
+ SET @@session.pseudo_thread_id=999999999/*!*/;
+ SET @@session.foreign_key_checks=1, @@session.sql_auto_is_null=0, @@session.unique_checks=1, @@session.autocommit=1/*!*/;
+ SET @@session.sql_mode=0/*!*/;
+@@ -693,6 +680,30 @@
+ SET @@session.character_set_client=8,@@session.collation_connection=8,@@session.collation_server=8/*!*/;
+ SET @@session.lc_time_names=0/*!*/;
+ SET @@session.collation_database=DEFAULT/*!*/;
++create table t1 (a int auto_increment not null primary key, b char(3))
++/*!*/;
++BEGIN
++/*!*/;
++SET INSERT_ID=1/*!*/;
++SET TIMESTAMP=1579609942/*!*/;
++insert into t1 values(null, "a")
++/*!*/;
++SET TIMESTAMP=1579609942/*!*/;
++COMMIT
++/*!*/;
++BEGIN
++/*!*/;
++SET INSERT_ID=2/*!*/;
++SET TIMESTAMP=1579609942/*!*/;
++insert into t1 values(null, "b")
++/*!*/;
++SET TIMESTAMP=1579609942/*!*/;
++COMMIT
++/*!*/;
++BEGIN
++/*!*/;
++SET INSERT_ID=3/*!*/;
++SET TIMESTAMP=1579609944/*!*/;
+ insert into t1 values(null, "c")
+ /*!*/;
+ SET TIMESTAMP=1579609944/*!*/;
+@@ -747,37 +758,6 @@
+ /*!40019 SET @@session.max_insert_delayed_threads=0*/;
+ /*!50003 SET @OLD_COMPLETION_TYPE=@@COMPLETION_TYPE,COMPLETION_TYPE=0*/;
+ DELIMITER /*!*/;
+-ROLLBACK/*!*/;
+-use `test`/*!*/;
+-SET TIMESTAMP=1579609942/*!*/;
+-SET @@session.pseudo_thread_id=999999999/*!*/;
+-SET @@session.foreign_key_checks=1, @@session.sql_auto_is_null=0, @@session.unique_checks=1, @@session.autocommit=1/*!*/;
+-SET @@session.sql_mode=0/*!*/;
+-SET @@session.auto_increment_increment=1, @@session.auto_increment_offset=1/*!*/;
+-/*!\C latin1 *//*!*/;
+-SET @@session.character_set_client=8,@@session.collation_connection=8,@@session.collation_server=8/*!*/;
+-SET @@session.lc_time_names=0/*!*/;
+-SET @@session.collation_database=DEFAULT/*!*/;
+-create table t1 (a int auto_increment not null primary key, b char(3))
+-/*!*/;
+-BEGIN
+-/*!*/;
+-SET INSERT_ID=1/*!*/;
+-SET TIMESTAMP=1579609942/*!*/;
+-insert into t1 values(null, "a")
+-/*!*/;
+-SET TIMESTAMP=1579609942/*!*/;
+-COMMIT
+-/*!*/;
+-BEGIN
+-/*!*/;
+-SET INSERT_ID=2/*!*/;
+-SET TIMESTAMP=1579609942/*!*/;
+-insert into t1 values(null, "b")
+-/*!*/;
+-SET TIMESTAMP=1579609942/*!*/;
+-COMMIT
+-/*!*/;
+ DELIMITER ;
+ # End of log file
+ ROLLBACK /* added by mysqlbinlog */;
+@@ -1040,11 +1020,8 @@
+ /*!50003 SET @OLD_COMPLETION_TYPE=@@COMPLETION_TYPE,COMPLETION_TYPE=0*/;
+ DELIMITER /*!*/;
+ ROLLBACK/*!*/;
+-BEGIN
+-/*!*/;
+-SET INSERT_ID=3/*!*/;
+ use `test`/*!*/;
+-SET TIMESTAMP=1579609944/*!*/;
++SET TIMESTAMP=1579609942/*!*/;
+ SET @@session.pseudo_thread_id=999999999/*!*/;
+ SET @@session.foreign_key_checks=1, @@session.sql_auto_is_null=0, @@session.unique_checks=1, @@session.autocommit=1/*!*/;
+ SET @@session.sql_mode=0/*!*/;
+@@ -1053,6 +1030,30 @@
+ SET @@session.character_set_client=8,@@session.collation_connection=8,@@session.collation_server=8/*!*/;
+ SET @@session.lc_time_names=0/*!*/;
+ SET @@session.collation_database=DEFAULT/*!*/;
++create table t1 (a int auto_increment not null primary key, b char(3))
++/*!*/;
++BEGIN
++/*!*/;
++SET INSERT_ID=1/*!*/;
++SET TIMESTAMP=1579609942/*!*/;
++insert into t1 values(null, "a")
++/*!*/;
++SET TIMESTAMP=1579609942/*!*/;
++COMMIT
++/*!*/;
++BEGIN
++/*!*/;
++SET INSERT_ID=2/*!*/;
++SET TIMESTAMP=1579609942/*!*/;
++insert into t1 values(null, "b")
++/*!*/;
++SET TIMESTAMP=1579609942/*!*/;
++COMMIT
++/*!*/;
++BEGIN
++/*!*/;
++SET INSERT_ID=3/*!*/;
++SET TIMESTAMP=1579609944/*!*/;
+ insert into t1 values(null, "c")
+ /*!*/;
+ SET TIMESTAMP=1579609944/*!*/;
+@@ -1087,37 +1088,6 @@
+ /*!40019 SET @@session.max_insert_delayed_threads=0*/;
+ /*!50003 SET @OLD_COMPLETION_TYPE=@@COMPLETION_TYPE,COMPLETION_TYPE=0*/;
+ DELIMITER /*!*/;
+-ROLLBACK/*!*/;
+-use `test`/*!*/;
+-SET TIMESTAMP=1579609942/*!*/;
+-SET @@session.pseudo_thread_id=999999999/*!*/;
+-SET @@session.foreign_key_checks=1, @@session.sql_auto_is_null=0, @@session.unique_checks=1, @@session.autocommit=1/*!*/;
+-SET @@session.sql_mode=0/*!*/;
+-SET @@session.auto_increment_increment=1, @@session.auto_increment_offset=1/*!*/;
+-/*!\C latin1 *//*!*/;
+-SET @@session.character_set_client=8,@@session.collation_connection=8,@@session.collation_server=8/*!*/;
+-SET @@session.lc_time_names=0/*!*/;
+-SET @@session.collation_database=DEFAULT/*!*/;
+-create table t1 (a int auto_increment not null primary key, b char(3))
+-/*!*/;
+-BEGIN
+-/*!*/;
+-SET INSERT_ID=1/*!*/;
+-SET TIMESTAMP=1579609942/*!*/;
+-insert into t1 values(null, "a")
+-/*!*/;
+-SET TIMESTAMP=1579609942/*!*/;
+-COMMIT
+-/*!*/;
+-BEGIN
+-/*!*/;
+-SET INSERT_ID=2/*!*/;
+-SET TIMESTAMP=1579609942/*!*/;
+-insert into t1 values(null, "b")
+-/*!*/;
+-SET TIMESTAMP=1579609942/*!*/;
+-COMMIT
+-/*!*/;
+ DELIMITER ;
+ # End of log file
+ ROLLBACK /* added by mysqlbinlog */;
+@@ -1443,11 +1413,8 @@
+ /*!50003 SET @OLD_COMPLETION_TYPE=@@COMPLETION_TYPE,COMPLETION_TYPE=0*/;
+ DELIMITER /*!*/;
+ ROLLBACK/*!*/;
+-BEGIN
+-/*!*/;
+-SET INSERT_ID=3/*!*/;
+ use `test`/*!*/;
+-SET TIMESTAMP=1579609944/*!*/;
++SET TIMESTAMP=1579609942/*!*/;
+ SET @@session.pseudo_thread_id=999999999/*!*/;
+ SET @@session.foreign_key_checks=1, @@session.sql_auto_is_null=0, @@session.unique_checks=1, @@session.autocommit=1/*!*/;
+ SET @@session.sql_mode=0/*!*/;
+@@ -1456,6 +1423,30 @@
+ SET @@session.character_set_client=8,@@session.collation_connection=8,@@session.collation_server=8/*!*/;
+ SET @@session.lc_time_names=0/*!*/;
+ SET @@session.collation_database=DEFAULT/*!*/;
++create table t1 (a int auto_increment not null primary key, b char(3))
++/*!*/;
++BEGIN
++/*!*/;
++SET INSERT_ID=1/*!*/;
++SET TIMESTAMP=1579609942/*!*/;
++insert into t1 values(null, "a")
++/*!*/;
++SET TIMESTAMP=1579609942/*!*/;
++COMMIT
++/*!*/;
++BEGIN
++/*!*/;
++SET INSERT_ID=2/*!*/;
++SET TIMESTAMP=1579609942/*!*/;
++insert into t1 values(null, "b")
++/*!*/;
++SET TIMESTAMP=1579609942/*!*/;
++COMMIT
++/*!*/;
++BEGIN
++/*!*/;
++SET INSERT_ID=3/*!*/;
++SET TIMESTAMP=1579609944/*!*/;
+ insert into t1 values(null, "c")
+ /*!*/;
+ SET TIMESTAMP=1579609944/*!*/;
+@@ -1510,37 +1501,6 @@
+ /*!40019 SET @@session.max_insert_delayed_threads=0*/;
+ /*!50003 SET @OLD_COMPLETION_TYPE=@@COMPLETION_TYPE,COMPLETION_TYPE=0*/;
+ DELIMITER /*!*/;
+-ROLLBACK/*!*/;
+-use `test`/*!*/;
+-SET TIMESTAMP=1579609942/*!*/;
+-SET @@session.pseudo_thread_id=999999999/*!*/;
+-SET @@session.foreign_key_checks=1, @@session.sql_auto_is_null=0, @@session.unique_checks=1, @@session.autocommit=1/*!*/;
+-SET @@session.sql_mode=0/*!*/;
+-SET @@session.auto_increment_increment=1, @@session.auto_increment_offset=1/*!*/;
+-/*!\C latin1 *//*!*/;
+-SET @@session.character_set_client=8,@@session.collation_connection=8,@@session.collation_server=8/*!*/;
+-SET @@session.lc_time_names=0/*!*/;
+-SET @@session.collation_database=DEFAULT/*!*/;
+-create table t1 (a int auto_increment not null primary key, b char(3))
+-/*!*/;
+-BEGIN
+-/*!*/;
+-SET INSERT_ID=1/*!*/;
+-SET TIMESTAMP=1579609942/*!*/;
+-insert into t1 values(null, "a")
+-/*!*/;
+-SET TIMESTAMP=1579609942/*!*/;
+-COMMIT
+-/*!*/;
+-BEGIN
+-/*!*/;
+-SET INSERT_ID=2/*!*/;
+-SET TIMESTAMP=1579609942/*!*/;
+-insert into t1 values(null, "b")
+-/*!*/;
+-SET TIMESTAMP=1579609942/*!*/;
+-COMMIT
+-/*!*/;
+ DELIMITER ;
+ # End of log file
+ ROLLBACK /* added by mysqlbinlog */;
+
+mysqltest: Result length mismatch
+
+safe_process[22541]: Got signal 17, child_pid: 22542
+safe_process[22541]: Killing child: 22542
+safe_process[22541]: Child exit: 1
+
+ - saving '/tmp/guix-build-mariadb-10.1.38.drv-0/build/mysql-test/var/2/log/binlog.binlog_mysqlbinlog2-mix/' to '/tmp/guix-build-mariadb-10.1.38.drv-0/build/mysql-test/var/log/binlog.binlog_mysqlbinlog2-mix/'
+worker[2] > Stopping all servers...
+
+Only  2357  of 6894 completed.
+--------------------------------------------------------------------------
+The servers were restarted 504 times
+Spent 1764.770 of 874 seconds executing testcases
+
+Failure: Failed 1/1034 tests, 99.90% were successful.
+
+Failing test(s): binlog.binlog_mysqlbinlog2
+
+The log files in var/log may give you some hint of what went wrong.
+
+If you want to report this error, please read first the documentation
+at http://dev.mysql.com/doc/mysql/en/mysql-test-suite.html
+
+484 tests were skipped, 72 by the test itself.
+
+mysql-test-run: *** ERROR: there were failing test cases
+Backtrace:
+           6 (primitive-load "/gnu/store/yzksam4xs36zdhicldvmdd42gvr…")
+In ice-9/eval.scm:
+   191:35  5 (_ _)
+In srfi/srfi-1.scm:
+   863:16  4 (every1 #<procedure 91ce40 at /gnu/store/6bwkbm3a80v0x…> …)
+In /gnu/store/6bwkbm3a80v0xab5qsicij7bjvmn5yna-module-import/guix/build/gnu-build-system.scm:
+   799:28  3 (_ _)
+In ice-9/eval.scm:
+    619:8  2 (_ #(#(#<directory (guile-user) 5ce140>) #t))
+In ice-9/boot-9.scm:
+    142:2  1 (dynamic-wind #<procedure 5637e0 at ice-9/eval.scm:330…> …)
+In /gnu/store/6bwkbm3a80v0xab5qsicij7bjvmn5yna-module-import/guix/build/utils.scm:
+    616:6  0 (invoke _ . _)
+
+/gnu/store/6bwkbm3a80v0xab5qsicij7bjvmn5yna-module-import/guix/build/utils.scm:616:6: In procedure invoke:
+Throw to key `srfi-34' with args `(#<condition &invoke-error [program: "./mtr" arguments: ("--verbose" "--retry=3" "--testcase-timeout=40" "--suite-timeout=600" "--parallel" "4" "--skip-test-list=unstable-tests") exit-status: 1 term-signal: #f stop-signal: #f] 5d2640>)'.
